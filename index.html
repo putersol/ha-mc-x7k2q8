@@ -1,0 +1,109 @@
+<!doctype html><html lang="es"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta http-equiv="refresh" content="900">
+<meta name="robots" content="noindex,nofollow">
+<title>HA Dashboard</title>
+<style>
+:root{--bg:#0f0d17;--card:#1a1726;--line:#2a2640;--ink:#ece9f5;--mut:#9a93b8;--gold:#c9a227;--pur:#7c6bb0}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--ink);font:14px/1.5 -apple-system,Segoe UI,Roboto,sans-serif;padding:22px;max-width:1100px;margin:auto}
+h1{font-size:20px;letter-spacing:.3px} h2{font-size:13px;text-transform:uppercase;letter-spacing:1px;color:var(--mut);margin:0 0 12px}
+.head{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:18px;flex-wrap:wrap;gap:6px}
+.sub{color:var(--mut);font-size:12px}
+.grid{display:grid;gap:14px} .g5{grid-template-columns:repeat(5,1fr)} .g3{grid-template-columns:2fr 1fr 1fr} .g2{grid-template-columns:1fr 1fr}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px}
+.kpi{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px}
+.kpi-label{color:var(--mut);font-size:11px;text-transform:uppercase;letter-spacing:.5px}
+.kpi-val{font-size:26px;font-weight:700;margin:6px 0 2px}
+.kpi-delta{font-size:12px} .kpi-prev{color:var(--mut)}
+.d-up{color:#4ade80} .d-down{color:#f87171} .d-flat{color:var(--mut)}
+table{width:100%;border-collapse:collapse;font-size:13px}
+td{padding:7px 4px;border-top:1px solid var(--line)} .r{text-align:right}
+.bar-row{display:flex;align-items:center;gap:8px;margin:7px 0;font-size:12px}
+.bar-label{width:200px;color:var(--ink);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.bar-track{flex:1;height:8px;background:#241f36;border-radius:6px;overflow:hidden}
+.bar-fill{display:block;height:100%;background:linear-gradient(90deg,var(--pur),var(--gold))}
+.bar-fill.f{background:linear-gradient(90deg,var(--gold),#e8c14e)}
+.bar-val{width:46px;text-align:right;color:var(--mut)}
+.funnel-step{margin:10px 0} .funnel-top{display:flex;justify-content:space-between;font-size:13px;margin-bottom:5px}
+.funnel-rate{font-size:11px;color:var(--mut)}
+.pending{background:#231a10;border:1px dashed #6b5519;color:#e8c14e;border-radius:10px;padding:14px;font-size:12px;text-align:center}
+.pending code{background:#000;padding:1px 5px;border-radius:4px}
+.big{font-size:30px;font-weight:700}
+.note{color:var(--mut);font-size:11px;margin-top:16px;line-height:1.7}
+@media(max-width:880px){.g5,.g3,.g2{grid-template-columns:1fr 1fr}}
+</style></head><body>
+<div class="head">
+  <div><h1>📊 Hispano Akademie — Dashboard</h1><div class="sub">Periodo: 2026-05-17 → 2026-06-15 · vs 30 días previos</div></div>
+  <div class="sub">Actualizado: 16 Jun 2026 · 15:41 · auto-refresh 15 min</div>
+</div>
+
+<div class="grid g5" style="margin-bottom:14px"><div class="kpi"><div class="kpi-label">Usuarios activos</div>
+      <div class="kpi-val">488</div>
+      <div class="kpi-delta"><span class="d-up">+5%</span> <span class="kpi-prev">vs 463</span></div></div><div class="kpi"><div class="kpi-label">Sesiones</div>
+      <div class="kpi-val">641</div>
+      <div class="kpi-delta"><span class="d-up">+11%</span> <span class="kpi-prev">vs 579</span></div></div><div class="kpi"><div class="kpi-label">Páginas vistas</div>
+      <div class="kpi-val">1.039</div>
+      <div class="kpi-delta"><span class="d-up">+9%</span> <span class="kpi-prev">vs 954</span></div></div><div class="kpi"><div class="kpi-label">Engagement</div>
+      <div class="kpi-val">55.2%</div>
+      <div class="kpi-delta"><span class="d-down">-0%</span> <span class="kpi-prev">vs 55.4%</span></div></div><div class="kpi"><div class="kpi-label">Conversiones (GA4)</div>
+      <div class="kpi-val">0</div>
+      <div class="kpi-delta"><span class="d-flat">—</span> <span class="kpi-prev">vs 0</span></div></div></div>
+
+<div class="grid g3" style="margin-bottom:14px">
+  <div class="card"><h2>Tendencia de sesiones (30 días)</h2>
+    <svg viewBox="0 0 720 90" width="100%" height="90" preserveAspectRatio="none"><polyline points="0,86 25,76 50,61 74,10 99,51 124,55 149,75 174,77 199,71 223,63 248,65 273,72 298,78 323,75 348,76 372,72 397,77 422,65 447,79 472,80 497,83 521,75 546,71 571,79 596,72 621,75 646,79 670,82 695,78 720,80" fill="none" stroke="#c9a227" stroke-width="2.5"/></svg></div>
+  <div class="card"><h2>Leads (CRM)</h2><div class="pending">⚠ Conecta <code>SUPABASE_SERVICE_KEY</code><br><small>para leer leads reales de calculator_leads</small></div></div>
+  <div class="card"><h2>CAC / Coste Meta</h2><div class="pending">⚠ Conecta <code>META_ACCESS_TOKEN</code><br><small>para coste de campañas y CAC</small></div></div>
+</div>
+
+<div class="grid g2" style="margin-bottom:14px">
+  <div class="card"><h2>Canales</h2>
+    <table><tr><td>Canal</td><td class="r">Sesiones</td><td class="r">Δ</td><td class="r">Engage</td></tr><tr><td>Organic Social</td><td class="r">311</td>
+      <td class="r"><span class="d-down">-20%</span></td><td class="r">61.4%</td></tr><tr><td>Paid Social</td><td class="r">112</td>
+      <td class="r"><span class="d-up">+331%</span></td><td class="r">42.9%</td></tr><tr><td>Direct</td><td class="r">96</td>
+      <td class="r"><span class="d-down">-17%</span></td><td class="r">55.2%</td></tr><tr><td>Organic Search</td><td class="r">75</td>
+      <td class="r"><span class="d-up">+67%</span></td><td class="r">56.0%</td></tr><tr><td>Referral</td><td class="r">28</td>
+      <td class="r"><span class="d-up">+460%</span></td><td class="r">32.1%</td></tr><tr><td>Unassigned</td><td class="r">16</td>
+      <td class="r"><span class="d-up">nuevo</span></td><td class="r">62.5%</td></tr><tr><td>Paid Other</td><td class="r">1</td>
+      <td class="r"><span class="d-up">nuevo</span></td><td class="r">100.0%</td></tr></table></div>
+  <div class="card"><h2>Embudo (proxy por páginas vistas)</h2><div class="funnel-step"><div class="funnel-top"><span>Home / entrada</span><b>327</b></div>
+      <div class="bar-track"><span class="bar-fill f" style="width:100%"></span></div></div><div class="funnel-step"><div class="funnel-top"><span>Calculadoras (/tax /rente)</span><b>257</b></div>
+      <div class="bar-track"><span class="bar-fill f" style="width:78%"></span></div><span class="funnel-rate">79% del paso anterior</span></div><div class="funnel-step"><div class="funnel-top"><span>Servicios / Precios</span><b>72</b></div>
+      <div class="bar-track"><span class="bar-fill f" style="width:22%"></span></div><span class="funnel-rate">28% del paso anterior</span></div><div class="funnel-step"><div class="funnel-top"><span>Contacto / Diagnóstico</span><b>2</b></div>
+      <div class="bar-track"><span class="bar-fill f" style="width:0%"></span></div><span class="funnel-rate">3% del paso anterior</span></div>
+    <div class="funnel-rate" style="margin-top:8px">⚠ Proxy por pageviews — GA4 no mide conversiones (key events = 0). El embudo real necesita evento form_submit.</div></div>
+</div>
+
+<div class="card"><h2>Páginas top</h2><div class="bar-row"><span class="bar-label">/</span>
+      <span class="bar-track"><span class="bar-fill" style="width:100%"></span></span>
+      <span class="bar-val">194</span></div><div class="bar-row"><span class="bar-label">/tax</span>
+      <span class="bar-track"><span class="bar-fill" style="width:79%"></span></span>
+      <span class="bar-val">154</span></div><div class="bar-row"><span class="bar-label">/insta</span>
+      <span class="bar-track"><span class="bar-fill" style="width:67%"></span></span>
+      <span class="bar-val">131</span></div><div class="bar-row"><span class="bar-label">/rente</span>
+      <span class="bar-track"><span class="bar-fill" style="width:53%"></span></span>
+      <span class="bar-val">103</span></div><div class="bar-row"><span class="bar-label">/guias/guia-pensiones</span>
+      <span class="bar-track"><span class="bar-fill" style="width:49%"></span></span>
+      <span class="bar-val">96</span></div><div class="bar-row"><span class="bar-label">/guias</span>
+      <span class="bar-track"><span class="bar-fill" style="width:44%"></span></span>
+      <span class="bar-val">86</span></div><div class="bar-row"><span class="bar-label">/webinar-medicos</span>
+      <span class="bar-track"><span class="bar-fill" style="width:30%"></span></span>
+      <span class="bar-val">60</span></div><div class="bar-row"><span class="bar-label">/guia-inmobiliaria</span>
+      <span class="bar-track"><span class="bar-fill" style="width:28%"></span></span>
+      <span class="bar-val">55</span></div><div class="bar-row"><span class="bar-label">/servicios</span>
+      <span class="bar-track"><span class="bar-fill" style="width:19%"></span></span>
+      <span class="bar-val">37</span></div><div class="bar-row"><span class="bar-label">/precios</span>
+      <span class="bar-track"><span class="bar-fill" style="width:18%"></span></span>
+      <span class="bar-val">35</span></div><div class="bar-row"><span class="bar-label">/calculadora</span>
+      <span class="bar-track"><span class="bar-fill" style="width:11%"></span></span>
+      <span class="bar-val">22</span></div><div class="bar-row"><span class="bar-label">/futuro-hijos</span>
+      <span class="bar-track"><span class="bar-fill" style="width:9%"></span></span>
+      <span class="bar-val">18</span></div></div>
+
+<div class="note">
+Fuente: Google Analytics 4 (property 525962974). · <b>Pendiente para overview completo:</b>
+(1) <code>SUPABASE_SERVICE_KEY</code> → leads reales por fuente; (2) <code>META_ACCESS_TOKEN</code> + ad account → coste y CAC;
+(3) configurar evento <code>form_submit</code> como key event en GA4 → embudo y conversiones reales (hoy = 0).
+</div>
+</body></html>
